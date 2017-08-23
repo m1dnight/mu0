@@ -14,14 +14,21 @@ cabal-version:       >=1.10
 extra-source-files:  README.md,
                      src/Parser.y,
                      src/Lexer.x
-                     
+
 
 executable mu0
   hs-source-dirs:      src
   main-is:             Main.hs
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5,
-                       array
-                       
+                       array,
+                       binary,
+                       bytestring,
+                       containers,
+                       mtl,
+                       transformers,
+                       pretty-hex
+
+
   build-tools:         happy,alex
-  other-modules:       Lexer,Reader, Parser, AST
+  other-modules:       Lexer,Reader, Parser, AST, Assembler

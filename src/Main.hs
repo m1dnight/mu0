@@ -1,6 +1,7 @@
 module Main where
 import Reader
 import Parser
+import Assembler
 
 main :: IO ()
 main = do
