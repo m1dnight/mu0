@@ -62,13 +62,13 @@ import AST
 
 Program
  : ProgramLines                    { reverse $1                 }
-                                   
-                                   
-ProgramLines                       
+
+
+ProgramLines
  : {- empty -}                     { []                         }
  | ProgramLines ProgramLine        { $2 : $1                    }
-                                   
-ProgramLine                        
+
+ProgramLine
  : Identifier ':' Instruction      { LabeledInstr (name $1) $3  }
  | Identifier ':' Number           { Const (name $1) (value $3) }
  | Instruction                     { Instr $1                   }
@@ -77,13 +77,13 @@ ProgramLine
 Instruction
  : ACC '<=' '[' StoreLine ']'        { M2A $4                     }
  | ACC '=>' '[' StoreLine ']'        { A2M $4                     }
- | ACC '+' '[' StoreLine ']'         { AMM $4                     }
- | ACC '-' '[' StoreLine ']'         { APM $4                     }
+ | ACC '+' '[' StoreLine ']'         { APM $4                     }
+ | ACC '-' '[' StoreLine ']'         { AMM $4                     }
  | PC  '<=' StoreLine                { PCSet $3                   }
  | 'IF' '+VE' PC '<=' StoreLine      { IfVe $5                    }
  | 'IF' '!= 0' ',' PC '<=' StoreLine { IfNe $6                    }
  | 'STOP'                            { STOP                       }
- 
+
 
 Register
  : ACC { Acc }

@@ -1,12 +1,12 @@
-    ACC <= [L2]
-    ACC => [112] 
-L1: ACC <= [112]  
-    ACC + [110]  
-    ACC => [112]
-    ACC <= [111]  
-    ACC - [L3]
-    ACC => [111]
-    IF != 0, PC <= L1
-    STOP
+    ACC <= [L2]       # 0x0 0x0
+    ACC => [112]      # 0x1 0x70
+L1: ACC <= [112]      # 0x0 0x70
+    ACC + [110]       # 0x2 0x6E
+    ACC => [112]      # 0x1 0x70
+    ACC <= [111]      # 0x0 0x6F
+    ACC - [L3]        # 0x3 0x1
+    ACC => [111]      # 0x1 0x6F
+    IF != 0, PC <= L1 # 0x6 0x4
+    STOP              # 0x7
 L2: 0
 L3: 1

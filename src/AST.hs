@@ -2,7 +2,7 @@ module AST where
 
 data ProgramLine
  = LabeledInstr String Instruction
- | Const String Integer
+ | Const String Int
  | Instr Instruction
  deriving (Show, Eq)
 
@@ -14,7 +14,7 @@ data Register
 
 
 data StoreLine
- = Address Integer
+ = Address Int
  | Label String
  deriving (Show, Eq)
 

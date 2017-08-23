@@ -31,4 +31,4 @@ executable mu0
 
 
   build-tools:         happy,alex
-  other-modules:       Lexer,Reader, Parser, AST, Assembler
+  other-modules:       Lexer,Reader, Parser, AST, Assembler, Util

@@ -87,7 +87,7 @@ mkL c (p, _, _, str) len = let t = take len str
                                 LComma      -> return $ Comma p
                                 LStop       -> return $ Stop p
                                 LIf         -> return $ If p
-                                LInteger    -> return (IntegerNum p ((read t) :: Integer))
+                                LInteger    -> return (IntegerNum p ((read t) :: Int))
                                 LIdentifier -> return (Identifier p t)
 
 
@@ -111,7 +111,7 @@ data Token
   | Comma         {position :: AlexPosn                   }
   | Stop          {position :: AlexPosn                   }
   | If            {position :: AlexPosn                   }
-  | IntegerNum    {position :: AlexPosn, value :: Integer }
+  | IntegerNum    {position :: AlexPosn, value :: Int     }
   | Identifier    {position :: AlexPosn, name :: String   }
   | Eof
   deriving (Eq, Show)
