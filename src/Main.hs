@@ -7,7 +7,7 @@ import Hexdump
 
 main :: IO ()
 main = do
-  source <- Reader.readProgram "asm/add.asm"
+  source <- Reader.readProgram "asm/fac.asm"
   case Parser.parse source of
     (Left err)  -> putStrLn err
     (Right ast) -> do
