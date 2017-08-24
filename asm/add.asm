@@ -9,6 +9,11 @@
 # - Z will be located at storeline 42                                #
 #                                                                    #
 ######################################################################
+    ACC <= [X]
+    ACC => [40]
+
+    ACC => [Y]
+    ACC => [41]
 
 # Set the accumulator to 0.
     ACC <= [L2]
@@ -27,6 +32,9 @@ L1: ACC <= [42]
     STOP
 L2: 0
 L3: 20
+
+X:  100
+Y:    2
 
 ######################################################################
 # This program should compile to the following binary .              #

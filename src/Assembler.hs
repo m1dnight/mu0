@@ -123,8 +123,10 @@ assemble_line (Instr instruction) =
 
 assemble_line (Const label value) =
   do
-    set_label label value
-    return $ BS.empty
+    -- The label is replaced everywhere with its position.
+    line_count >>= set_label label
+    line_count_inc 1
+    return $ BS.singleton . fromIntegral $ value
 
 assemble_line (LabeledInstr label instruction) =
   do
