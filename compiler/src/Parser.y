@@ -91,8 +91,9 @@ Register
 
 StoreLine
  : Number     { Address (value $1) }
- | Identifier { Label (name $1)   }
-
+ | Identifier { Label (name $1)    }
+ | PC         { ProgramCounter     }
+ 
 
 {
 

@@ -16,6 +16,7 @@ data Register
 data StoreLine
  = Address Int
  | Label String
+ | ProgramCounter
  deriving (Show, Eq)
 
 
