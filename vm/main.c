@@ -12,7 +12,7 @@ file_size (FILE * f)
 }
 
 
-void
+int
 main (int argc, char *argv[])
 {
   // Read in the filename of the binary.
@@ -57,7 +57,7 @@ main (int argc, char *argv[])
       unsigned char current = memory[PC];
       printf ("\n\n\nCurrent: 0x%x", current);
       printf("\n  ACC =  0x%x", acc);
-      printf("\n  PC  =  0x%x", PC);      
+      printf("\n  PC  =  0x%x", PC);
 
       switch (current)
 	{
@@ -76,7 +76,7 @@ main (int argc, char *argv[])
 
 	  // ACC => [S]
 	case 0x1:
-          printf("\nACC => [S]");          
+          printf("\nACC => [S]");
 	  s = memory[PC + 1];
           printf("\n  Writing 0x%x to address 0x%x", acc, s);
 	  memory[s] = acc;
@@ -86,7 +86,7 @@ main (int argc, char *argv[])
 
 	  // ACC + [S]
 	case 0x2:
-          printf("\nACC + [S]");                    
+          printf("\nACC + [S]");
 	  s = memory[PC + 1];
 	  temp = memory[s];
 	  acc = acc + temp;
@@ -96,7 +96,7 @@ main (int argc, char *argv[])
 
 	  // ACC - [S]
 	case 0x3:
-          printf("\nACC - [S]");                    
+          printf("\nACC - [S]");
 	  s = memory[PC + 1];
 	  temp = memory[s];
 	  acc = acc - temp;
@@ -107,7 +107,7 @@ main (int argc, char *argv[])
 
 	  // PC <= S
 	case 0x4:
-          printf("\nPC <= S");                    
+          printf("\nPC <= S");
 	  s = memory[PC + 1];
 	  PC = s;
 	  PC++;
@@ -129,7 +129,7 @@ main (int argc, char *argv[])
 
 	  // IF != 0 PC <= S
 	case 0x6:
-          printf("\nIF != 0 PC <= S");          
+          printf("\nIF != 0 PC <= S");
 	  s = memory[PC + 1];
 	  if (acc == 0x0)
 	    {
@@ -151,5 +151,7 @@ main (int argc, char *argv[])
   for(int i = 0; i < 32; i++)
     {
       printf("0x%x ", memory[i]);
-    }      
+    }
+
+  return 1;
 }

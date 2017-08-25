@@ -2,24 +2,35 @@
 
 ## Grammar
 
-An example program (adding two numbers) of the MU0 emulator is shown below.
+An example program to multiply two numbers.
 
 ```
-ACC <= [L2]  # Set Z to 0 in the beginning.
-ACC => [112] # Write the initial value of Z.
-# Read current Z, add X, and write back.   
-L1: ACC <= [112]  
-ACC + [110 ]
-ACC => [112]
-# Read in Y, decrement, and write back.
-ACC <= [111]
-ACC - [L3]
-ACC => [111]
-IF != 0, PC <= L1
-STOP
-# Constants
+    ACC <= [X]
+    ACC => [40]
+
+    ACC => [Y]
+    ACC => [41]
+
+# Set the accumulator to 0.
+    ACC <= [L2]
+
+# Write our temporary result to memory address 42.
+    ACC => [42]
+
+# Start of sequence to keep adding.
+L1: ACC <= [42]
+    ACC + [40]
+    ACC => [42]
+    ACC <= [41]
+    ACC - [L3]
+    ACC => [41]
+    IF != 0, PC <= L1
+    STOP
 L2: 0
-L3: 1
+L3: 20
+
+X:  100
+Y:    2
 ```
 
 From this program we derived the following grammar.
@@ -48,3 +59,12 @@ From this program we derived the following grammar.
 -- Conditional = If IfOperator Register Operator MemAddress
 -- Instruction = Register Operator Address  | Stop | Conditional
 ```
+
+# Executing
+
+ 1. Compile the compiler with `cd compiler ; stack install`.
+ 2. Compile a sample program `mu0 examples/fac.asm fac`
+ 3. Compile the VM `cd vm & make & cd ..`
+ 4. Execute the program `./vm/main fac`
+
+You will see the memory dump of the VM.
