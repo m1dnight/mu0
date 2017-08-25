@@ -62,7 +62,7 @@ From this program we derived the following grammar.
 
 # Executing
 
- 1. Compile the compiler with `cd compiler ; stack install`.
+ 1. Compile the compiler with `cd compiler && stack install && cd ..`.
  2. Compile a sample program `mu0 examples/fac.asm fac`
  3. Compile the VM `cd vm & make & cd ..`
  4. Execute the program `./vm/main fac`
